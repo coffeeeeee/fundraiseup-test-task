@@ -1,0 +1,16 @@
+{
+  "name": "fundraiseup-test-task",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Denis Krylov",
+  "license": "ISC",
+  "dependencies": {
+    "@fastify/static": "^6.5.0",
+    "@types/node": "^18.8.4",
+    "fastify": "^4.8.1"
+  }
+}
