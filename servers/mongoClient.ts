@@ -1,12 +1,10 @@
-import { MongoClient } from "mongodb";
+import * as mongoose from "mongoose";
+import {Connection} from "mongoose";
 
-export async function connect(
+export function connect(
   host: string,
   port: number
-): Promise<MongoClient> {
+): Connection {
   const mongoUrl = `mongodb://${host}:${port}`;
-  const client = new MongoClient(mongoUrl);
-  await client.connect();
-
-  return client;
+  return mongoose.createConnection(mongoUrl);
 }

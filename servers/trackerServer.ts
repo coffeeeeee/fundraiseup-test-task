@@ -1,10 +1,10 @@
 import Fastify from "fastify";
 import FastifyStatic from "@fastify/static";
 import * as path from "path";
-import { Db } from "mongodb";
 import { TrackerService } from "../services/trackerService";
+import {Connection} from "mongoose";
 
-export const run = (port: number, db: Db) => {
+export const run = (port: number, mongoClient: Connection) => {
   const fastify = Fastify({
     logger: true,
   });
@@ -17,8 +17,7 @@ export const run = (port: number, db: Db) => {
     reply.sendFile("trackerBrowser.js");
   });
 
-  const tracksCollection = db.collection<IEvent>("tracks");
-  const trackerService = new TrackerService(tracksCollection);
+  const trackerService = new TrackerService(mongoClient);
 
   fastify.post("/track", function (request, reply) {
     const events = JSON.parse(request.body as string) as IEvent[];

@@ -1,13 +1,26 @@
-import { Collection } from "mongodb";
+import {Connection, Model, Schema} from "mongoose";
 
 export class TrackerService {
-  constructor(private tracksCollection: Collection<IEvent>) {}
+  private model: Model<IEvent>;
+
+  constructor(mongoClient: Connection) {
+
+    const eventSchema = new Schema({
+      event: String,
+      tags: Array,
+      url: String,
+      title: String,
+      ts: String,
+    })
+
+    this.model = mongoClient.model<IEvent>('Track', eventSchema);
+  }
 
   public async track(events: IEvent[]) {
-    return this.tracksCollection.insertMany(events);
+    return this.model.create(events);
   }
 
   public async getEvents() {
-    return this.tracksCollection.find().toArray();
+    return this.model.find();
   }
 }
