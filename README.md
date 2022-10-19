@@ -6,16 +6,10 @@
 npm install
 ```
 
-2.Run MongoDb from project root:
+2.Start the app running the following command from project root:
 
 ```
-npm run start:mongo
-```
-
-3.From another terminal session run the following command from project root:
-
-```
-npm run start:app
+npm run start
 ```
 
 In case of troubles completely remove dist and restart the app.

@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:app": "tsc && node dist/index.js",
-    "start:mongo": "mongod --dbpath=./data"
+    "start": "tsc && node dist/index.js"
   },
   "author": "Denis Krylov",
   "license": "ISC",
